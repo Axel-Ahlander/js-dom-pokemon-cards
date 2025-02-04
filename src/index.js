@@ -39,9 +39,19 @@ function drawPokemon(){
         for (let j = 0; j < data[i].stats.length; j++){
             let item = document.createElement('li');
             item.innerHTML = `${data[i].stats[j].stat.name.toUpperCase()}: ${data[i].stats[j].base_stat}`;
-            text.appendChild(item);
+            text.append(item);
+        }
+
+        let gameList = document.createElement('ul');
+        gameList.classList.add('card--text');
+        gameList.innerHTML = 'Games: '
+        for (let o = 0; o < data[i].game_indices.length; o++){
+            let item = document.createElement('li');
+            item.innerHTML = `${data[i].game_indices[o].version.name}`;
+            gameList.append(item);
         }
         
+        text.append(gameList);
         card.append(title);
         card.append(image);
         card.append(text);
